@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Bulb</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="bulb">
+
+    </div>
+    <button id="switch">ON</button>
+    <script>
+        var bulb = document.querySelector("#bulb");
+        var button = document.querySelector("#switch");
+        var isOn = 0; // state variabele
+        //adding functionality to button to turn on and off the bulb
+        button.addEventListener("click", function lightSwitch() {
+            if (isOn == 0) {
+                bulb.style.backgroundColor = "yellow";
+                button.innerHTML = "OFF";
+                isOn = 1;
+            } else {
+                bulb.style.backgroundColor = "white";
+                button.innerHTML = "ON";
+                isOn = 0;
+            }
+        })
+    </script>
+</body>
+
+</html>
