@@ -1,33 +1,43 @@
 <html>
 
 <head>
-    <title>Todo Application</title>
+    <title>
+        Todo Application
+    </title>
 </head>
 
 <body>
-    <h1>Todo Application</h1>
+    <h1>TodoList Application</h1>
+    <input type="text" placeholder="Enter Tasks">
+    <button onclick="addtodo()">Add Todo</button>
 
-    <h3>Go to library</h3>
-    <h3>Cook food</h3>
-
-    <div>
-        <input id="todo-input" type="text" placeholder="Enter tasks">
-        <button onclick="addTodo()">Add Todo</button>
-    </div>
     <script>
-        function deleteTodo() {
-            console.log("Todo deleted");
+        let counter = 1;
+
+        function deleteTodo(index) {
+            const deleteElment = document.getElementById(index);
+            deleteElment.parentNode.removeChild(deleteElment);
         }
 
+        function addtodo() {
+            const input = document.querySelector("input");
+            const value = input.value;
 
-        function addTodo() {
-            const todoElement = document.querySelector("input");
-            const value = todoElement.value;
-            const createTodo = document.createElement("div");
-            createTodo.innerHTML = "<div>" + value + "</div><button onClick = 'deleteTodo()'>delete</button>"
-            document.querySelector("body").appendChild(createTodo);
-            const deleteTodo = document.createElement("button");
-        }
+            // empty todo alert
+            if (value.trim() === "") {
+                alert("Task cannot be empty");
+                return;
+            }
+
+            const element = document.createElement("div");
+            element.setAttribute("id", counter);
+            element.innerHTML = "<div>" + value + "</div><button onclick='deleteTodo(" + counter + ")'>delete</button>"
+            document.querySelector("body").appendChild(element);
+
+            counter = counter + 1;
+            input.value = " ";
+
+        };
     </script>
 </body>
 
