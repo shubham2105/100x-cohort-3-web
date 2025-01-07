@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>Todo Application</title>
+</head>
+
+<body>
+    <h1>Todo Application</h1>
+    <input type="text" placeholder="Enter tasks">
+    <button onclick="addTodo()">Add todo</button>
+
+    <script>
+        let counter = 1;
+
+        function deleteTodo(index) {
+            const deleteElement = document.getElementById(index);
+            deleteElement.parentNode.removeChild(deleteElement);
+        }
+
+        function addTodo() {
+            const input = document.querySelector("input");
+            const value = input.value;
+            if (value.trim() === "") {
+                alert("Tasks cannot be empty");
+                return;
+            }
+            const element = document.createElement("div");
+            element.setAttribute("id", counter)
+            element.innerHTML = "<div>" + value + "</div><button onclick= 'deleteTodo(" + counter + ")'>delete</button>"
+            document.querySelector("body").appendChild(element);
+            input.value = " ";
+        }
+    </script>
+</body>
+
+</html>
